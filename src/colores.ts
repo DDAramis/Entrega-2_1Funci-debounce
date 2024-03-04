@@ -36,17 +36,6 @@ export function CombinarColores(combinar:string[]): number {
     return Number(Combinacion);
 };
 
-//Ftr
-export function thorttle(func: (combinar: string[]) => number, limit: number): (combinar: string[]) => void {
-    let Enfriador: boolean;
-    return function (combinar: string[]) {
-        if (!Enfriador) {
-            func(combinar);
-            Enfriador = true;            setTimeout(() => Enfriador = false, limit)
-        }
-    } 
-}
-
 
 
 //4:
