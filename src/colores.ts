@@ -1,11 +1,8 @@
 export function hello(): string {
-    return 'Hello, World'
+    return 'Hello, World';
 }
 
-
- 
 // 1:
-
 type BandaDeColores = 'Black' | 'Brown' | 'Red' | 'Orange' | 'Yellow' | 'Green' | 'Blue' | 'Violet' | 'Grey' | 'White';
 
 //2:
@@ -25,41 +22,27 @@ const ColorAndNumber: {[buscar in BandaDeColores]: string } = {
 //3:
 export function ValorColor(map: string): string {
     return ColorAndNumber[map as BandaDeColores] || "Error: Color no válido";
- 
 };
-
-
-
-export function CombinarColores(combinar:string[]): number {
-    const [color1, color2] = combinar;
-    const Combinacion = ValorColor(color1) + ValorColor(color2);
-    return Number(Combinacion);
-};
-
-
 
 //4:
- function debounce(func:(colores: string[]) => number, wait: number): (colores:string[]) => void {
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+export function CombinarColores(combinar: string[]): number {
+    const [color1, color2] = combinar;
+    const combinacion = ValorColor(color1) + ValorColor(color2);
+    return Number(combinacion);
+};
 
-
-//5:     
-    return function(combinar: string[]) {
-        const later = () => {
-            timeoutId = null;
-            func(combinar);
-        }
-//6:
-        if (timeoutId !== null) {
-            clearTimeout(timeoutId);
-        }
+//5:
+export function debounce(func, wait) {
+    let timeoutId = null;
+    return function(...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => func(...args), wait);
     };
-  
- }
- 
- const CombinacionSinCrona = debounce(CombinarColores, 500);
+}
 
-// 7:
- CombinacionSinCrona(['Blue', 'Red']);
+//6:
+const CombinacionSinCrona = debounce(CombinarColores, 500);
 
+//7:
+CombinacionSinCrona(['Blue', 'Red']);
   
