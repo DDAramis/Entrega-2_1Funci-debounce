@@ -27,3 +27,5 @@ no sobre cargue la pagina.
 haya seleccionado el color con el wait, 
 si no, el temporizador se reinicaria.
 7- que esto se llama cada vez que el usuario elige un par de colores.
+
+para test en jest: npm test

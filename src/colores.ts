@@ -6,17 +6,17 @@ export function hello(): string {
 type BandaDeColores = 'Black' | 'Brown' | 'Red' | 'Orange' | 'Yellow' | 'Green' | 'Blue' | 'Violet' | 'Grey' | 'White';
 
 //2:
-const ColorAndNumber: {[buscar in BandaDeColores]: string } = {
-  "Black": "0", 
-  "Brown": "1", 
-  "Red": "2",
-  "Orange": "3",
-  "Yellow": "4",
-  "Green": "5",
-  "Blue": "6",
-  "Violet": "7",
-  "Grey": "8",
-  "White": "9",
+const ColorAndNumber: { [buscar in BandaDeColores]: string } = {
+    "Black": "0",
+    "Brown": "1",
+    "Red": "2",
+    "Orange": "3",
+    "Yellow": "4",
+    "Green": "5",
+    "Blue": "6",
+    "Violet": "7",
+    "Grey": "8",
+    "White": "9",
 };
 
 //3:
@@ -32,10 +32,12 @@ export function CombinarColores(combinar: string[]): number {
 };
 
 //5:
-export function debounce(func, wait) {
-    let timeoutId = null;
-    return function(...args) {
-        clearTimeout(timeoutId);
+export function debounce(func: (...args: any[]) => any, wait: number): (...args: any[]) => void {
+    let timeoutId: NodeJS.Timeout | null = null;
+    return function(...args: any[]): void {
+        if (timeoutId !== null) {
+            clearTimeout(timeoutId);
+        }
         timeoutId = setTimeout(() => func(...args), wait);
     };
 }
